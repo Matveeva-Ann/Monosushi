@@ -1,0 +1,35 @@
+<div class="container">
+  <form name="promoForm" class="promoForm" [formGroup]="promoForm" (ngSubmit)="addPromo()">
+    <input type="text" formControlName="promoTitle" class="input" placeholder="*Назва">
+    <input type="text" formControlName="promoPath" class="input" placeholder="*Шлях">
+    <p class="tip"> *Після речення використовуйте знак '<span class="coralColor">$</span>' для того, щоб перенести його на новий рядок.</p>
+    <textarea name="" formControlName="description" class="inputTextarea input" placeholder="*Опис"></textarea>
+   
+    <ng-container *ngIf="!addedFile; else elseTemplate">
+      <div class="inputFileWrapper">
+        <div class="inputFileWrapper-unit">
+          <input type="file" class="inputFile" id="inputFile" (change)="loadImage($event)">
+          <label for="inputFile">Фото для сторінки акції</label>
+          <progress class="progressBar" max="100" value="{{uploadPercent}}"></progress>
+        </div>
+        <div class="inputFileWrapper-unit">
+          <input type="file" class="inputFile" id="inputFileHome" (change)="loadImageForHome($event)">
+          <label for="inputFileHome">Фото для домашньої сторінки</label>
+          <progress class="progressBar" max="100" value="{{uploadPercentIMGForHome}}"></progress>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="imgWrapper">
+        <img [src]="sendPromo ? sendPromo.img : urlPromo" class="img">
+        <span class="cross" (click)="deleteImg('img')">&times;</span>  
+      </div>
+      <div class="imgWrapper">
+        <img [src]="sendPromo ? sendPromo.imgForHome : urlPromoHome" class="img">
+        <span class="cross" (click)="deleteImg('imgForHome')">&times;</span>  
+      </div>
+    </ng-template>
+
+    <button type="submit" class="save-btn" [disabled]="promoForm.invalid"> {{!editStatus ? "зберегти" : "зберегти зміни" }}</button>
+  </form>
+</div>

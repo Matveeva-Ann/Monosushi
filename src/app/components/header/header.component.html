@@ -1,0 +1,44 @@
+<div class="container">
+  
+  <div class="logo" [routerLink]="['']">
+    <div class="logo-img"></div>
+  </div>
+
+  <app-nav-pages></app-nav-pages>
+  <app-burger-menu></app-burger-menu>
+
+  <div class="callYou">
+    <div class="callYou-wrapper" (click)="willCall = true">
+      <div class="callYou-img"></div>
+      <span class="callYou-text">ми зателефонуємо</span>
+    </div>
+  </div>
+
+  <div class="telephoneHours">
+    <div class="telephoneHours-wrapper">
+      <a href="tel:(097) 878 08 37" class="telephoneNumber">(097) 878 08 37</a>
+      <p class="hoursWork">Працюємо з <span class="black">11:00</span> до <span class="black"> 22:30</span></p>
+    </div>
+  </div>
+
+  <div class="enter" [routerLink]="['admin/promotions']">
+    <img src="/assets/img/user.svg" alt="user" class="enter-icon">
+  </div>
+
+  
+  <div class="basket" (click)="showBasketProduct = !showBasketProduct">
+    <div class="basket-wrapper">
+      <img class="basket-wrapper-img" src="/assets/img/basket.svg" alt="basket">
+      <span class="basket-wrapper-badge">{{ countProd }}</span>
+    </div>
+    <span class="basket-text">{{ priseProd }} грн.</span>
+  </div>
+  <ng-container *ngIf="showBasketProduct;">
+    <app-basket (click)="closeBasket()" (changeBasket)="changeBasket()"></app-basket>
+  </ng-container>
+ 
+  
+
+</div>
+
+<app-will-call *ngIf="willCall" [willCall] = 'willCall' (closeFormCall)="closeFormCall()"></app-will-call>

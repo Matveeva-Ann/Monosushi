@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 class="title">{{ categoryTitle }}</h2>
+  <div class="sushiNavigation" *ngIf="showSushiNavigation">
+    <app-sushi-navigation (categoryRol)="categoryRol($event)"></app-sushi-navigation>
+  </div>
+  <div class="cards">
+    <app-product-card [userProducts]="userProducts"></app-product-card>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <form name="goodsForm" [formGroup]="goodsForm" class="goodsForm" (ngSubmit)="addGoods()">
+    <div class="categoryWrapper">
+      <select class="input" formControlName="category"  (change)="onCategoryChange($event)">
+        <option value="*Виберіть категорію" selected disabled>*Виберіть категорію</option>
+        <option [value]="category.title" *ngFor="let category of allCategories">{{category.title}}</option>
+      </select>
+      <select class="input" formControlName="categoryRol" *ngIf="categoryRoli">
+        <option value="*Виберіть вид рола" selected disabled>*Виберіть вид рола</option>
+        <option value="philadelphia">Філадельфія</option>
+        <option value="california">Каліфорнія</option>
+        <option value="baked">Запечені</option>
+        <option value="firm">Фірмові</option>
+        <option value="maki">Макі</option>
+        <option value="premium">Преміуи</option>
+      </select>
+    </div>
+    <input type="text" formControlName="title" class="input halfInput" placeholder="*Назва">
+    <input type="text" formControlName="path" class="input halfInput" placeholder="*Шлях">
+    <input type="text" formControlName="ingredients" class="input" placeholder="*Інгредієнти">
+    <div class="halfInput">
+      <input type="number" formControlName="weight" class="input halfInput" placeholder="*Вага">
+      <select class="input halfInput" formControlName="unit">
+        <option value="г" selected>г</option>
+        <option value="л">л</option>
+        <option value="мл">мл</option>
+      </select>
+    </div>
+    <input type="number" formControlName="price" class="input halfInput" placeholder="*Ціна">
+    <ng-container *ngIf="!addedFile; else elseTemplate">
+      <input type="file" class="inputFile" id="inputFile" (change)="addFile($event)">
+      <label for="inputFile">Додайте файл</label>
+      <progress class="progressBar" max="100" value="{{uploadPercent}}"></progress>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="imgWrapper">
+        <img  [src]="editProduct ? editProduct.img : url" alt="" class="img">
+        <span class="cross" (click)="deleteImg()">&times;</span>
+      </div>
+    </ng-template>
+    <!-- <app-adding-photo (sendImgToForm)="sendImgToForm($event)" (sendUrlToForm)="sendUrlToForm($event)" [sendEditImg]="sendEditImg"></app-adding-photo> -->
+
+    <button type="submit" class="save-btn" [disabled]="goodsForm.invalid" >{{editStatus ? 'Зберезти зміни' : 'зберегти'}}</button>
+  </form>
+</div>

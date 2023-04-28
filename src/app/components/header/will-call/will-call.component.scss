@@ -1,0 +1,56 @@
+@import "/src/app/shared/styles/variables";
+@import "/src/app/shared/styles/mixins";
+
+.content {
+  @extend %flexCenter;
+  flex-direction: column;
+  gap: 15px;
+  &-title {
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+  &-text {
+    color: $darkGray;
+    font-size: 16px;
+    text-align: center;
+    max-width: 390px;
+    margin-bottom: 20px;
+   
+  }
+  &-input {
+    @extend %textSelection;
+    // @include size(480px, 56px);
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1px solid $gray;
+    font-size: 17px;
+    &:placeholder-shown {
+      font-size: 18px;
+      user-select: none;
+    }
+    &:focus {
+      border: 1px solid $mainColor;
+      outline: none;
+    }
+  }
+}
+.btn {
+  cursor: pointer;
+  background-color: $mainColor;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 18px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  &:active {
+    transform: translate3d(0, 2px, 0);
+  }
+  &:hover {
+    background-color: $white;
+    border: 2px solid $mainColor;
+  }
+}
+
+

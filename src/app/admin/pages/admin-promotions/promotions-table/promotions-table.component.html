@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th class="header-th">Дата</th>
+      <th class="header-th">Назва</th>
+      <th class="header-th">Заголовок</th>
+      <th class="header-th">Опис</th>
+      <th class="header-th">Картинка</th>
+      <th class="header-th">Дії</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let promo of promotionsArr">
+      <td class="body-td">{{promo.date | date: 'dd.MM.YYYY'}}</td>
+      <td class="body-td">{{promo.promoPath}}</td>
+      <td class="body-td">{{promo.promoTitle}}</td>
+      <td class="body-td">{{promo.description | slice:0:110}} <span *ngIf="promo.description.length>110">...</span></td>
+      <td class="body-td"><img [src]="promo.img" alt="" class="body-td-img"></td>
+      <td class="body-td">
+        <button class="edit body-td-btn" (click)="editPromo(promo)">Редагувати</button>
+        <button class="delete body-td-btn" (click)="deletePromo(promo)">Видалити</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,26 @@
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@font-face {
+  font-family: 'Rotondac';
+  src: url(./assets/fonts/rotondac.otf);
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  position: relative;
+  font-family: 'Rotondac';
+
+}
+
+::selection {
+  background-color: #b5d8f7;
+  color: #fff;
+}
+

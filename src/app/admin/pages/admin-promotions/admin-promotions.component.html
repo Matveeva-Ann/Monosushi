@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="addPromotion" (click)="addPromotionBtn()">додати акцію</div>
+  <ng-container *ngIf="addPromotion; else promotionsForma">
+    <app-promotions-table (sendEditPromo)="sendEditPromo($event)"></app-promotions-table>
+  </ng-container>
+  <ng-template #promotionsForma>
+    <app-promotions-forma (toggleWindow)="toggleWindow()" [sendPromo]="sendPromo"></app-promotions-forma>
+  </ng-template>
+</div>

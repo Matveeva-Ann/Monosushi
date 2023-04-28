@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Rotondac";
+  src: url(./assets/fonts/rotondac.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "Rotondac";
+}
+
+::-moz-selection {
+  background-color: #b5d8f7;
+  color: #fff;
+}
+
+::selection {
+  background-color: #b5d8f7;
+  color: #fff;
+}/*# sourceMappingURL=styles.css.map */

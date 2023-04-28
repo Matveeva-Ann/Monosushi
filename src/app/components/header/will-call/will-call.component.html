@@ -1,0 +1,10 @@
+<app-modal-window *ngIf="willCall" (click)="closeWindow()" (close)="closeWindow()">
+  <div class="content">
+    <h3 class="content-title"> МИ ЗАТЕЛЕФОНУЄМО</h3>
+    <p class="content-text">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
+    <input type="text" class="content-input" placeholder="Ваше ім’я">
+    <input type="tel" ngx-mask="" class="content-input phoneNumber" placeholder="Ваш номер телефону"
+    [textMask]="{mask: phoneMask}"> 
+    <button type="button" class="content-input btn">надіслати</button>
+  </div>
+</app-modal-window>

@@ -1,0 +1,18 @@
+<div class="container">
+  <p>work</p>
+  <form name="categoryForm" class="categoryForm" [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+    <input type="text" formControlName="title" class="input" placeholder="*Назва">
+    <input type="text" formControlName="path" class="input" placeholder="*Шлях">
+    <ng-container *ngIf="!addedFile; else elseTemplate">
+      <input type="file" class="inputFile" id="inputFile" (change)="uploadImg($event)">
+      <progress class="progressBar" max="100" value="{{uploadPercent}}"></progress>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="imgWrapper">
+        <img [src]="sendCategoryEdit ? sendCategoryEdit.img :url" alt="" class="img">
+        <span class="cross" (click)="deleteImg()">&times;</span>
+      </div>
+    </ng-template>
+    <button type="submit" class="save-btn" [disabled]="categoryForm.invalid">{{editStatus ? 'Зберезти зміни' : 'зберегти'}}</button>
+  </form>
+</div>
