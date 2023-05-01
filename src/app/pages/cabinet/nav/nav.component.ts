@@ -1,22 +1,18 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-nav',
-  templateUrl: './admin-nav.component.html',
-  styleUrls: ['./admin-nav.component.scss']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
-export class AdminNavComponent {
-
+export class NavComponent {
   public activeTab = '';
-
+  
   constructor(
-    private router: Router
+    private router: Router,
   ){}
 
-  ngOnInit(): void {
-
-  }
   click(clickElem:string):void{
     this.activeTab=clickElem;
   }
@@ -25,5 +21,4 @@ export class AdminNavComponent {
     this.router.navigate(['/']);
     localStorage.removeItem('currentUser');
   }
-
 }

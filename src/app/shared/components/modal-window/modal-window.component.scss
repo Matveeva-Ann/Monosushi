@@ -18,6 +18,9 @@
   border-radius: 10px;
   @extend %flexCenter;
   position: relative;
+  @media (max-width: 650px){
+    width: 100%;
+  }
   @media (max-width: 560px){
     padding: 35px 15px;
   }

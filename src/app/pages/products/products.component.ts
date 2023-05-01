@@ -12,6 +12,7 @@ import { GoodsServiceService } from 'src/app/shared/services/goodsSevice/goods-s
 })
 export class ProductsComponent {
   public userProducts: Array<IGoodsResponse> = [];
+  public products: IGoodsResponse[] = [];
   public categoryTitle = '';
   public showSushiNavigation = false;
   private eventSubscription!: Subscription;
@@ -31,21 +32,15 @@ export class ProductsComponent {
 
   categoryRol(categoryRol: string): void {
     this.categoryRolClick = categoryRol;
-    this.eventSubscription = this.goodsService
-      .getGoodsByCategory('roli')
-      .subscribe((data) => {
-        this.userProducts = data.filter(
-          (item) => {
-            if (this.categoryRolClick === item.categoryRol){
-              return true
-            } else if (this.categoryRolClick === 'all'){
-              return true;
-            } else{
-              return false;
-            }
-          }
-        );
-      });
+    this.products = this.userProducts.filter((item) => {
+      if (this.categoryRolClick === item.categoryRol) {
+        return true;
+      } else if (this.categoryRolClick === 'all') {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -61,6 +56,7 @@ export class ProductsComponent {
     }
     this.goodsService.getGoodsByCategory(categoryName).subscribe((data)=>{
       this.userProducts = data;
+      this.products = this.userProducts;
       this.categoryTitle = data[0].category;
     })
   }

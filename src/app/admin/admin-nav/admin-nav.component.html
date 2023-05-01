@@ -5,5 +5,5 @@
     <li class="list-item" [routerLink]="[ 'goods' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'goods'}" (click)="click('goods')">Товари</li>
     <li class="list-item" [routerLink]="[ 'order' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'order'}" (click)="click('order')">Замовлення</li>
   </ul>
-  <button class="btn">Вихід</button>
+  <button class="btn" (click)="logout()">Вихід</button>
 </div>

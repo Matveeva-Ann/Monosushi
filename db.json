@@ -536,6 +536,71 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/product%2F6.-vegetarianskyj-z-chukoyu.jpg.pagespeed.ce.wQ6uiG3c9e.jpg?alt=media&token=29266035-aa5d-4215-b749-a41e64267a20",
       "count": 1,
       "id": 38
+    },
+    {
+      "category": "Роли",
+      "categoryRol": "california",
+      "categoryPath": "roli",
+      "title": "Каліфорнія з вугрем",
+      "path": "kopiyakaliforniya-z-krevetkoyu",
+      "ingredients": "Рис, авокадо, огірок, вугор, чорний кунжут, унагі соус",
+      "weight": 240,
+      "unit": "г",
+      "price": 288,
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/product%2F4.-kaliforniya-z-vugrem.jpg.pagespeed.ce.GLSGvsXV38.jpg?alt=media&token=19a10e33-a241-4e7d-acc5-6035a6884c37",
+      "count": 1,
+      "id": 39
+    },
+    {
+      "category": "Роли",
+      "categoryRol": "california",
+      "categoryPath": "roli",
+      "title": "Каліфорнія з лососем",
+      "path": "kaliforniya-z-lososem-2",
+      "ingredients": "Рис, спайсі соус, авокадо, огірок, лосось, кунжут",
+      "weight": 250,
+      "unit": "г",
+      "price": 253,
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/product%2F1.1-kaliforniya-z-lososem-v-kunzhuti.jpg.pagespeed.ce.7bkd5a58bq.jpg?alt=media&token=2f1d43b4-4569-4368-8641-ea35890c61d5",
+      "count": 1,
+      "id": 40
+    },
+    {
+      "category": "Роли",
+      "categoryRol": "maki",
+      "categoryPath": "roli",
+      "title": "Макі з вугрем",
+      "path": "maki-z-vugrem",
+      "ingredients": "Рис, норі, вугор, унагі соус",
+      "weight": 120,
+      "unit": "г",
+      "price": 333,
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/product%2F6.-maki-z-vugrem.jpg.pagespeed.ce.uVLs6tUhTV.jpg?alt=media&token=1678d88d-65d3-4d5a-8664-a1830bc8bdd0",
+      "count": 1,
+      "id": 41
+    }
+  ],
+  "auth":[
+    {
+      "id":1,
+      "email": "admin@gmail.com",
+      "password": 123,
+      "fulName": "Anna",
+      "role": "ADMIN"
+    },
+    {
+      "id":2,
+      "email": "nastya@gmail.com",
+      "password": 123,
+      "fulName": "Nastya",
+      "role": "USER"
+    },
+    {
+      "id":3,
+      "email": "nastya2@gmail.com",
+      "password": 123,
+      "fulName": "Nastya",
+      "role": "USER"
     }
   ]
 }

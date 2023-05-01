@@ -21,9 +21,24 @@
     </div>
   </div>
 
-  <div class="enter" [routerLink]="['admin/promotions']">
-    <img src="/assets/img/user.svg" alt="user" class="enter-icon">
+  <div class="enter" (click)="loginWindow = !loginWindow">
+    <img src="/assets/img/user.svg" [routerLink]="['/' + enteredUrl]" alt="user" class="enter-icon">
   </div>
+
+  <app-modal-window *ngIf="loginWindow" (click)="closeWindow()" (close)="closeWindow()">
+    <div class="content">
+      <h3 class="content-title">Вхід в кабінет</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="content">
+        <input type="text" formControlName="email" class="content-input" placeholder="*Ваш email">
+        <input type="password" formControlName="password" class="content-input" placeholder="*Пароль">
+        <button type="submit" [disabled]="loginForm.invalid" class="content-input btn">надіслати</button>
+      </form>
+      <div class="popup-wrapper">
+        <a class="popup">Забули пароль?</a>
+        <a class="popup">Зареєструватись</a>
+      </div>
+    </div>
+  </app-modal-window>
 
   
   <div class="basket" (click)="showBasketProduct = !showBasketProduct">

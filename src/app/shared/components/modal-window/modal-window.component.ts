@@ -6,10 +6,7 @@ import { Component, Input, Output,  EventEmitter } from '@angular/core';
   styleUrls: ['./modal-window.component.scss']
 })
 export class ModalWindowComponent {
-  // @Input() willCall!:boolean;
   @Output() close = new EventEmitter<void>();
-
- 
 
   closeWindow(){
     this.close.emit();

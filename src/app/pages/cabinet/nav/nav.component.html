@@ -1,0 +1,7 @@
+<div class="container">
+  <ul class="list">
+    <li class="list-item" [routerLink]="[ 'userData' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'userData'}"  (click)="click('userData')">Особисті дані</li>
+    <li class="list-item" [routerLink]="[ 'orderHistory' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'orderHistory'}" (click)="click('orderHistory')">Історія замовлення</li>
+  </ul>
+  <button class="btn" (click)="logout()">Вихід</button>
+</div>

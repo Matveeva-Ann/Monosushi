@@ -11,6 +11,7 @@ import { GoodsServiceService } from 'src/app/shared/services/goodsSevice/goods-s
 export class HomeComponent {
   private eventSubscription!: Subscription;
   public userProducts: IGoodsResponse[] = [];
+  public products: IGoodsResponse[] = [];
   private categoryRolClick!: string;
 
   constructor(private goodsService: GoodsServiceService) {}
@@ -21,28 +22,23 @@ export class HomeComponent {
 
   categoryRol(categoryRol: string): void {
     this.categoryRolClick = categoryRol;
-    this.eventSubscription = this.goodsService
-      .getGoodsByCategory('roli')
-      .subscribe((data) => {
-        this.userProducts = data.filter(
-          (item) => {
-            if (this.categoryRolClick === item.categoryRol){
-              return true
-            } else if (this.categoryRolClick === 'all'){
-              return true;
-            } else{
-              return false;
-            }
-          }
-        );
-      });
+    this.products = this.userProducts.filter((item) => {
+      if (this.categoryRolClick === item.categoryRol) {
+        return true;
+      } else if (this.categoryRolClick === 'all') {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
-  loadGoods() {
+  async loadGoods() {
     this.eventSubscription = this.goodsService
       .getGoodsByCategory('roli')
       .subscribe((data) => {
-        this.userProducts = data;
+         this.userProducts = data;
+         this.products = this.userProducts;
       });
   }
 

@@ -52,6 +52,11 @@ import { PromotionsInfoComponent } from './pages/promotions-info/promotions-info
 import { ControlsComponent } from './shared/components/controls/controls.component';
 import { BasketComponent } from './pages/basket/basket.component';
 import { BreadCrumbsComponent } from './shared/components/bread-crumbs/bread-crumbs.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { NavComponent } from './pages/cabinet/nav/nav.component';
+import { PagesComponent } from './pages/cabinet/pages/pages.component';
+import { UserDataComponent } from './pages/cabinet/pages/user-data/user-data.component';
+import { OrderHistoryComponent } from './pages/cabinet/pages/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +99,11 @@ import { BreadCrumbsComponent } from './shared/components/bread-crumbs/bread-cru
     ControlsComponent,
     BasketComponent,
     BreadCrumbsComponent,
+    CabinetComponent,
+    NavComponent,
+    PagesComponent,
+    UserDataComponent,
+    OrderHistoryComponent,
  ],
   imports: [
     BrowserModule,
