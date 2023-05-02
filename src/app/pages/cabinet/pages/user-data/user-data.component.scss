@@ -1,0 +1,55 @@
+@import "/src/app/shared/styles/variables";
+@import "/src/app/shared/styles/mixins";
+
+.titleWrapper{
+  display: flex;
+  gap: 15px;
+}
+.titleNumber{
+  min-width: 25px;
+  min-height: 25px;
+  border-radius: 5px;
+  background-color: $mainColor;
+  padding: 3px;
+  text-align: center;
+}
+.userDataForm{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0 40px;
+}
+.input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  color: $darkGrayText;
+  font-size: 16px;
+  &:focus{
+    outline: none;
+  }
+}
+.userDataWrapper, .btn-wrapper{
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+.btn-wrapper{
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.save-btn, .add-btn{
+  @extend %btnStyle;
+  font-size: 13px;
+  background-color: $white;
+  padding: 10px 30px;
+}
+.save-btn{
+  border: 2px solid $mainColor;
+  background-color: $mainColor;
+  &:hover {
+    background-color: transparent;
+  }
+}

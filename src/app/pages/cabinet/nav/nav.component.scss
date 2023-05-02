@@ -12,6 +12,7 @@
   user-select: none;
   &-item {
     padding: 20px 25px;
+    min-width: 190px;
     color: $darkGrayText;
     list-style: none;
     border-bottom: 1px solid $gray;
