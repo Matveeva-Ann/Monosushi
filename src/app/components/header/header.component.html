@@ -21,11 +21,11 @@
     </div>
   </div>
 
-  <div class="enter" (click)="loginWindow = !loginWindow">
-    <img src="/assets/img/user.svg" [routerLink]="['/' + enteredUrl]" alt="user" class="enter-icon">
+  <div class="enter" (click)="openLoginDialog()">
+    <img src="/assets/img/user.svg" alt="user" class="enter-icon">
   </div>
 
-  <app-modal-window *ngIf="loginWindow" (click)="closeWindow()" (close)="closeWindow()">
+  <!-- <app-modal-window *ngIf="loginWindow" (click)="closeWindow()" (close)="closeWindow()">
     <div class="content">
       <h3 class="content-title">Вхід в кабінет</h3>
       <form [formGroup]="loginForm" (ngSubmit)="login()" class="content">
@@ -38,7 +38,7 @@
         <a class="popup">Зареєструватись</a>
       </div>
     </div>
-  </app-modal-window>
+  </app-modal-window> -->
 
   
   <div class="basket" (click)="showBasketProduct = !showBasketProduct">

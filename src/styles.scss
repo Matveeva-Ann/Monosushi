@@ -1,6 +1,9 @@
 
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'src/app/shared/styles/theme-material';
+@import 'ngx-toastr/toastr';
+
 
 @font-face {
   font-family: 'Rotondac';
@@ -24,3 +27,6 @@ body{
   color: #fff;
 }
 
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

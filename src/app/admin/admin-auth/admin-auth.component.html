@@ -1,0 +1,16 @@
+<app-modal-window (click)="closeWindow()" (close)="closeWindow()">
+  <form class="example-form" [formGroup]="adminLoginForm">
+    <h1 mat-dialog-title class="title">Вхід для адміністратора</h1>
+    <div class="fieldWrapper">
+      <mat-form-field appearance="outline">
+        <mat-label>Ваш email</mat-label>
+        <input matInput formControlName="email" type="email" class="a">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input matInput formControlName="password" type="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="loginAdmin()">Увійти в кабінет</button>
+    </div>
+  </form>
+</app-modal-window>

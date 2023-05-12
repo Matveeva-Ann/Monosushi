@@ -22,6 +22,8 @@ import { UserDataComponent } from './pages/cabinet/pages/user-data/user-data.com
 import { OrderHistoryComponent } from './pages/cabinet/pages/order-history/order-history.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AuthCabinetGuard } from './shared/guards/authCabinet/auth-cabinet.guard';
+import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
+
 
 
 
@@ -29,6 +31,7 @@ import { AuthCabinetGuard } from './shared/guards/authCabinet/auth-cabinet.guard
 const routes: Routes = [
   {path:'deliveryPayment', component: DeliveryPaymentComponent},
   {path:'aboutUs', component: AboutUsComponent},
+  {path:'auth', component: AdminAuthComponent},
   {path:'promotions', component: PromotionsComponent},
   {path:'promotions/:id', component: PromotionsInfoComponent, resolve:{
     promoInfo: PromoResolver
@@ -39,7 +42,7 @@ const routes: Routes = [
     productInfo: ProductInfoResolver,
   }},
   {path:'oferta', component: OfertaComponent},
-  {path:'cabinet/userData/:id', component: CabinetComponent, canActivate: [AuthCabinetGuard], children: [
+  {path:'cabinet', component: CabinetComponent, canActivate: [AuthCabinetGuard], children: [
     {path: 'userData', component:UserDataComponent},
     {path: 'orderHistory', component: OrderHistoryComponent}
   ]},

@@ -36,7 +36,11 @@ import { PromotionsFormaComponent } from './admin/pages/admin-promotions/promoti
 import { OfertaComponent } from './pages/oferta/oferta.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+
 import { CardComponent } from './pages/promotions/card/card.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { InfoDeliverySushiComponent } from './pages/home/info-delivery-sushi/info-delivery-sushi.component';
@@ -57,6 +61,11 @@ import { NavComponent } from './pages/cabinet/nav/nav.component';
 import { PagesComponent } from './pages/cabinet/pages/pages.component';
 import { UserDataComponent } from './pages/cabinet/pages/user-data/user-data.component';
 import { OrderHistoryComponent } from './pages/cabinet/pages/order-history/order-history.component';
+import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
+import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthDialogComponent } from './components/header/auth-dialog/auth-dialog.component';
+import { RegisterDialogComponent } from './components/header/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +113,9 @@ import { OrderHistoryComponent } from './pages/cabinet/pages/order-history/order
     PagesComponent,
     UserDataComponent,
     OrderHistoryComponent,
+    AdminAuthComponent,
+    AuthDialogComponent,
+    RegisterDialogComponent,
  ],
   imports: [
     BrowserModule,
@@ -114,8 +126,12 @@ import { OrderHistoryComponent } from './pages/cabinet/pages/order-history/order
     HttpClientModule,
     CarouselModule,
     TextMaskModule,
+    ToastrModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()) 
+    provideStorage(() => getStorage()), 
+    provideAuth(() => getAuth()), 
+    provideFirestore(() => getFirestore()),
+    SharedModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

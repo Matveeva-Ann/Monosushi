@@ -1,0 +1,49 @@
+@import "/src/app/shared/styles/variables";
+@import "/src/app/shared/styles/mixins";
+
+.title{
+  text-align: center;
+  font-size: 26px;
+  color: $black;
+  font-weight: 700;
+  margin-bottom: 30px;
+  height: auto;
+}
+.fieldWrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-wrapper {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.popup {
+  font-size: 16px;
+  transition: 0.35s;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  &:hover{
+    color: $mainColor;
+  }
+  &:active{
+    transform:translate3d(0, 0.2em, 0);
+  }
+}
+
+.cross {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  @include size (40px, 40px);
+  padding: 10px;
+  top: 3px;
+  right: 3px;
+  &:hover {
+    fill: $mainColor;
+  }
+}

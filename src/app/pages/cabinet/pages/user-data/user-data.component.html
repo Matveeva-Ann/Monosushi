@@ -4,13 +4,13 @@
     <h3 class="title">Особисті дані</h3>
   </div>
 
-  <form class="userDataForm">
+  <form class="userDataForm" [formGroup]="userDataForm">
     <div class="userDataWrapper">
-      <input type="text" class="input" placeholder="*Ваше ім’я">
-      <input type="text" class="input" placeholder="*Ваше прізвище">
+      <input type="text" class="input" formControlName ="userName" placeholder="*Ваше ім’я" >
+      <input type="text" class="input"  formControlName ="userLastName" placeholder="*Ваше прізвище">
     </div>
-    <input type="number" class="input" placeholder="*Ваш номер телефону">
-    <input type="text" class="input" placeholder="*Ваш email">
+    <input type="number" class="input" formControlName ="userPhone" placeholder="*Ваш номер телефону">
+    <input type="text" class="input" formControlName ="userEmail" placeholder="*Ваш email">
   </form>
 
   <div class="titleWrapper">

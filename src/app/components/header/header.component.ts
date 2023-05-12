@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ROLE } from 'src/app/shared/constants/roles.constant';
 import { IGoodsResponse } from 'src/app/shared/interface/goodsInterface/goods-interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderServiceService } from 'src/app/shared/services/orderService/order-service.service';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,8 @@ export class HeaderComponent {
     private orderService: OrderServiceService,
     private fb: FormBuilder,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
     ) {}
 
   
@@ -37,7 +40,7 @@ export class HeaderComponent {
     this.updateBasket();
     this.initLoginForm();
 
-    console.log('Логін: admin@gmail.com Пароль: 123; Логін: nastya@gmail.com Пароль: 123 ')
+    console.log('Логін: admin@gmail.com Пароль: 123123; Логін: user@gmail.com Пароль: 123123')
   }
 
   initLoginForm():void{
@@ -87,5 +90,25 @@ export class HeaderComponent {
 
   closeWindow(): void{
     this.loginWindow = false;
+  }
+
+  openLoginDialog():void{
+    const currentUser = JSON.parse( localStorage.getItem('currentUser') as string );
+    if (currentUser === null){
+      this.dialog.open(AuthDialogComponent, {
+        backdropClass: 'dialog-back',
+        panelClass: 'auth-dialog',
+        autoFocus: false,
+        disableClose: false,
+        enterAnimationDuration: 500,
+        exitAnimationDuration: 500,
+        hasBackdrop: true,
+      })
+    } else if (currentUser.role === ROLE.USER){
+      this.router.navigate([`/cabinet/userData`]);
+    } else if( currentUser.role === ROLE.ADMIN){
+      this.router.navigate(['/admin/promotions'])
+    }
+   
   }
 }

@@ -16,7 +16,7 @@ export class AuthCabinetGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const currentUser = JSON.parse(localStorage.getItem('currentUser') as string );
-      if (currentUser && currentUser.role === ROLE.USER && Number(currentUser.id) === Number(route.params['id'])) {
+      if (currentUser && currentUser.role === ROLE.USER) {
         return true;
       }
       this.router.navigate(['/']);

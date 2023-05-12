@@ -1,0 +1,45 @@
+<span class="cross" (click)="closeWindow()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 96 96" fill="gray" class="cross">
+    <use href="/assets/img/cross.svg#root" />
+  </svg>
+</span>
+<h1 mat-dialog-title class="title">Зареєструватись</h1>
+<form [formGroup]="signUpForm">
+  <div class="fieldWrapper">
+    <div class="fieldWrapperElem">
+      <mat-form-field appearance="outline">
+        <mat-label>*Ваш ім’я</mat-label>
+        <input matInput type="text" formControlName="userFirstName" class="a">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>*Ваш прізвище</mat-label>
+        <input matInput formControlName="userLastName" type="text">
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>*Ваш телефон</mat-label>
+      <input matInput type="number" formControlName="userPhoneNumber" class="a">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>*Ваш email</mat-label>
+      <input matInput type="email" formControlName="userEmail" class="a">
+    </mat-form-field>
+    <div class="fieldWrapperElem">
+      <mat-form-field appearance="outline">
+        <mat-label>*Пароль</mat-label>
+        <input matInput type="password" formControlName="userPassword">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>*Повторіть пароль</mat-label>
+        <input matInput type="password" formControlName="userRepeatPassword">
+      </mat-form-field>
+    </div>
+    <div class="agree-wrapper">
+      <input type="checkbox" id="checkbox-entry" formControlName="termsAndConditions">
+      <label for="checkbox-entry" class="checkbox-entry enter"> Я погоджуюсь з <a class="weight popup">Правилами
+          користування</a></label>
+    </div>
+    <button mat-raised-button color="primary" (click)="registerUser()">Зареєструватися</button>
+    <span class="enter"> Вже зареєстровані? <a (click)="closeRegister()" class="weight popup">Увійти</a></span>
+  </div>
+</form>

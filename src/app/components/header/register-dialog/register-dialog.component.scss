@@ -1,0 +1,97 @@
+@import "/src/app/shared/styles/variables";
+@import "/src/app/shared/styles/mixins";
+
+.title{
+  text-align: center;
+  font-size: 26px;
+  color: $black;
+  font-weight: 700;
+  margin-bottom: 30px;
+  height: auto;
+}
+.fieldWrapper{
+  display: flex;
+  flex-direction: column;
+}
+.fieldWrapperElem{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.enter{
+  text-align: center;
+  margin-top: 25px;
+  font-size: 18px;
+  vertical-align: middle;
+  color: $darkGrayText;
+}
+.checkbox-entry{
+  margin-top: 0px;
+  margin-bottom: 25px;
+  text-align: start;
+  user-select: none;
+  position: relative;
+  margin-left: 28px;
+  cursor: pointer;
+  
+  &::before{
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $mainColor;
+    position: absolute;
+  }
+  &::after {
+    content: '';
+    display: none;
+    width: 11px;
+    height: 11px;
+    background-color: $mainColor;
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    border-radius: 2px;
+  }
+}
+.agree-wrapper{
+  margin-bottom: 25px;
+}
+.weight{
+  font-weight: 700;
+  cursor: pointer;
+  color: $black;
+}
+.popup {
+  font-size: 16px;
+  transition: 0.35s;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  &:hover{
+    color: $mainColor;
+  }
+  &:active{
+    transform:translate3d(0, 0.2em, 0);
+  }
+}
+#checkbox-entry{
+  display: none;
+  &:checked + .checkbox-entry::after{
+    display: block;
+  }
+}
+
+.cross {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  @include size (40px, 40px);
+  padding: 10px;
+  top: 3px;
+  right: 3px;
+  &:hover {
+    fill: $mainColor;
+  }
+}

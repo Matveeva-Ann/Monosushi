@@ -1,16 +1,16 @@
 {
   "category": [
     {
-      "title": "Роли",
-      "path": "roli",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/category%2Fnav-img-rolls.svg?alt=media&token=c15db57e-5ed6-4e5a-8ea5-85d784bf96bf",
-      "id": 1
-    },
-    {
       "title": "Сети",
       "path": "setu",
       "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/category%2Fnav-img-sets.svg?alt=media&token=49c0ea02-e246-4c1a-8c40-e4500f233e14",
       "id": 2
+    },
+    {
+      "title": "Роли",
+      "path": "roli",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-1681d.appspot.com/o/category%2Fnav-img-drinks.svg?alt=media&token=2110d021-e0e4-4421-b636-2b43cee3478a",
+      "id": 1
     },
     {
       "title": "Напої",
@@ -580,23 +580,23 @@
       "id": 41
     }
   ],
-  "auth":[
+  "auth": [
     {
-      "id":1,
+      "id": 1,
       "email": "admin@gmail.com",
       "password": 123,
       "fulName": "Anna",
       "role": "ADMIN"
     },
     {
-      "id":2,
+      "id": 2,
       "email": "nastya@gmail.com",
       "password": 123,
       "fulName": "Nastya",
       "role": "USER"
     },
     {
-      "id":3,
+      "id": 3,
       "email": "nastya2@gmail.com",
       "password": 123,
       "fulName": "Nastya",
