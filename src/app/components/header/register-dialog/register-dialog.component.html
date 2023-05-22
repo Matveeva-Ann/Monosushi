@@ -4,7 +4,7 @@
   </svg>
 </span>
 <h1 mat-dialog-title class="title">Зареєструватись</h1>
-<form [formGroup]="signUpForm">
+<form [formGroup]="signUpForm" (ngSubmit)="passwordVerification()">
   <div class="fieldWrapper">
     <div class="fieldWrapperElem">
       <mat-form-field appearance="outline">
@@ -34,12 +34,14 @@
         <input matInput type="password" formControlName="userRepeatPassword">
       </mat-form-field>
     </div>
+    <div class="errorWrapper">
+      <mat-error *ngIf="checkError('matchError')"> *Помилка реєстрації. Підтвердження паролю не співпадає. </mat-error>
+    </div>
     <div class="agree-wrapper">
       <input type="checkbox" id="checkbox-entry" formControlName="termsAndConditions">
-      <label for="checkbox-entry" class="checkbox-entry enter"> Я погоджуюсь з <a class="weight popup">Правилами
-          користування</a></label>
+      <label for="checkbox-entry" class="checkbox-entry enter"> Я погоджуюсь з <a class="weight popup">Правилами користування</a></label>
     </div>
-    <button mat-raised-button color="primary" (click)="registerUser()">Зареєструватися</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid" (click)="registerUser()">Зареєструватися</button>
     <span class="enter"> Вже зареєстровані? <a (click)="closeRegister()" class="weight popup">Увійти</a></span>
   </div>
 </form>

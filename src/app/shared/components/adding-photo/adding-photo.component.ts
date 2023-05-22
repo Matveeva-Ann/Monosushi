@@ -31,7 +31,6 @@ export class AddingPhotoComponent {
   constructor(private storage: Storage) {}
 
   deleteImg() {
-    console.log(this.sendEditImg)
     const task = ref(this.storage, this.sendEditImg);
     this.uploadPercent = 0;
     deleteObject(task).then(() => {

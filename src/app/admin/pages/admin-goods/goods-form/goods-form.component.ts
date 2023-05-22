@@ -37,13 +37,13 @@ export class GoodsFormComponent {
     this.getCategories();
     this.initGoodsForm();
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["editProduct"].currentValue){
       this.initGoodsForm();
     }
   }
- 
+
   onCategoryChange(event: any):void{
     if (event.target.value === 'Роли'){
       this.categoryRoli = true;
@@ -71,7 +71,6 @@ export class GoodsFormComponent {
       this.addedFile = true;
       this.editStatus = true;
       this.category = this.editProduct.category;
-      // this.categoryRol = this.categoryRol;
       this.idEditedProduct = this.editProduct.id;
       this.url = this.editProduct.img;
       this.goodsForm.patchValue({
@@ -88,25 +87,24 @@ export class GoodsFormComponent {
       })
     }
   }
-  
+
   public addGoods() {
     if (this.categoryRoli) {
       this.goodsForm.addControl('categoryRol', new FormControl());
     } else {
       this.goodsForm.removeControl('categoryRol');
     }
- 
+
     const index = this.allCategories.findIndex(category => category.title === this.goodsForm.value.category);
     this.goodsForm.patchValue({
        categoryPath: this.allCategories[index].path,
     })
-  
+
     if (this.editProduct){
       this.goodsService.updateGoods(this.goodsForm.value, this.idEditedProduct).subscribe();
     }else{
       this.goodsService.addGoods(this.goodsForm.value).subscribe(()=>{});
     }
-    console.log(this.goodsForm.value)
     this.addedFile = false;
     this.editStatus = false;
     this.goodsForm.reset();
@@ -129,9 +127,8 @@ export class GoodsFormComponent {
       })
     })
   }
-  
+
   valueByControl(control: string): string {
-    console.log(this.goodsForm.get('img')?.value);
     this.sendEditImg = this.goodsForm.get('img')?.value;
     return this.goodsForm.get(control)?.value;
   }
@@ -149,8 +146,8 @@ export class GoodsFormComponent {
   async uploadFile( folder: string, name: string, file: File | null): Promise<string> {
     const path = `${folder}/${name}`;
     if (file) {
-      const storageRef = ref(this.storage, path); 
-      const task = uploadBytesResumable(storageRef, file); 
+      const storageRef = ref(this.storage, path);
+      const task = uploadBytesResumable(storageRef, file);
       percentage(task).subscribe((data) => {
         this.uploadPercent = data.progress;
       });
@@ -163,3 +160,5 @@ export class GoodsFormComponent {
     return Promise.resolve(this.url);
   }
 }
+
+

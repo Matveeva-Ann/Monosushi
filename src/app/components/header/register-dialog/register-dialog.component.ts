@@ -21,6 +21,7 @@ import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 })
 export class RegisterDialogComponent {
   public signUpForm!: FormGroup;
+  public checkPassword = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -35,10 +36,10 @@ export class RegisterDialogComponent {
 
   ngOnInit(): void {
     this.initForm();
-    
+
   }
 
- 
+
   closeRegister(): void {
     this.closeWindow();
     this.dialog.open(AuthDialogComponent, {
@@ -62,11 +63,12 @@ export class RegisterDialogComponent {
       userRepeatPassword: [null, [Validators.required]],
       termsAndConditions: [false, [Validators.requiredTrue]],
     })
-
   }
 
-
   registerUser():void {
+    if ( this.signUpForm.value.userPassword !== this.signUpForm.value.userRepeatPassword){
+      return;
+    }
     const {userEmail, userPassword} = this.signUpForm.value;
     this.userSignUp(userEmail, userPassword).then(()=>{
         console.log('login done')
@@ -88,12 +90,23 @@ export class RegisterDialogComponent {
       orders: [],
       role: ROLE.USER,
     }
-    setDoc(doc(this.afs, 'Users', credential.user.uid), newUser);
     localStorage.setItem('currentUser', JSON.stringify(newUser));
-    this.router.navigate([`/cabinet/userData`]);
+    await setDoc(doc(this.afs, 'Users', credential.user.uid), newUser);
+    await this.router.navigate([`/cabinet/userData`]);
     this.closeWindow();
   }
-  
+
+  passwordVerification(){
+    this.checkPassword = this.signUpForm.value.userPassword === this.signUpForm.value.userRepeatPassword;
+    if ( this.signUpForm.value.userPassword !== this.signUpForm.value.userRepeatPassword){
+      this.signUpForm.controls['userRepeatPassword'].setErrors({
+        matchError: 'Wrong password'
+      })
+    }
+  }
+  checkError( name: string): boolean | null{
+    return this.signUpForm.controls['userRepeatPassword'].errors?.[name];
+  }
   closeWindow(): void {
     this.dialogRef.close();
   }

@@ -21,7 +21,7 @@ export class HeaderComponent {
   public enteredUrl = '';
   public loginWindow = false;
   public loginForm!: FormGroup;
- 
+
   constructor(
     private orderService: OrderServiceService,
     private fb: FormBuilder,
@@ -30,7 +30,7 @@ export class HeaderComponent {
     private dialog: MatDialog,
     ) {}
 
-  
+
   closeFormCall(): void {
     this.willCall = false;
   }
@@ -109,6 +109,6 @@ export class HeaderComponent {
     } else if( currentUser.role === ROLE.ADMIN){
       this.router.navigate(['/admin/promotions'])
     }
-   
+
   }
 }

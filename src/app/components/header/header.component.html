@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="logo" [routerLink]="['']">
     <div class="logo-img"></div>
   </div>
@@ -25,22 +25,6 @@
     <img src="/assets/img/user.svg" alt="user" class="enter-icon">
   </div>
 
-  <!-- <app-modal-window *ngIf="loginWindow" (click)="closeWindow()" (close)="closeWindow()">
-    <div class="content">
-      <h3 class="content-title">Вхід в кабінет</h3>
-      <form [formGroup]="loginForm" (ngSubmit)="login()" class="content">
-        <input type="text" formControlName="email" class="content-input" placeholder="*Ваш email">
-        <input type="password" formControlName="password" class="content-input" placeholder="*Пароль">
-        <button type="submit" [disabled]="loginForm.invalid" class="content-input btn">надіслати</button>
-      </form>
-      <div class="popup-wrapper">
-        <a class="popup">Забули пароль?</a>
-        <a class="popup">Зареєструватись</a>
-      </div>
-    </div>
-  </app-modal-window> -->
-
-  
   <div class="basket" (click)="showBasketProduct = !showBasketProduct">
     <div class="basket-wrapper">
       <img class="basket-wrapper-img" src="/assets/img/basket.svg" alt="basket">
@@ -51,9 +35,6 @@
   <ng-container *ngIf="showBasketProduct;">
     <app-basket (click)="closeBasket()" (changeBasket)="changeBasket()"></app-basket>
   </ng-container>
- 
-  
 
 </div>
-
 <app-will-call *ngIf="willCall" [willCall] = 'willCall' (closeFormCall)="closeFormCall()"></app-will-call>

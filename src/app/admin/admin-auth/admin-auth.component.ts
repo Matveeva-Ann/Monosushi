@@ -13,7 +13,7 @@ import { ROLE } from 'src/app/shared/constants/roles.constant';
 })
 export class AdminAuthComponent {
   public adminLoginForm!: FormGroup;
- 
+
   constructor (
     private router: Router,
     private fb: FormBuilder,
@@ -52,7 +52,7 @@ export class AdminAuthComponent {
 
   async login( email:string, password: string): Promise<void>{
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
-    docData(doc(this.afs, 'Users', credential.user.uid)).subscribe(user => {
+    const authSub= docData(doc(this.afs, 'Users', credential.user.uid)).subscribe(user => {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if(user['role'] === ROLE.ADMIN) {
@@ -60,11 +60,13 @@ export class AdminAuthComponent {
       } else {
         this.router.navigate(['/']);
       }
+      authSub.unsubscribe();
     }, (e) => {
       this.router.navigate(['/']);
+      authSub.unsubscribe();
       console.log('error', e);
     })
   }
-  
+
 
 }

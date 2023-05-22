@@ -52,8 +52,7 @@ export class AuthDialogComponent {
 
   async login( email:string, password: string): Promise<void>{
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
-    console.log(credential)
-    docData(doc(this.afs, 'Users', credential.user.uid)).subscribe(user => {
+    const usersSub =  docData(doc(this.afs, 'Users', credential.user.uid)).subscribe(user => {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if(user['role'] === ROLE.USER) {
@@ -62,12 +61,14 @@ export class AuthDialogComponent {
       } else {
         this.router.navigate(['/']);
       }
+      usersSub.unsubscribe();
     }, (e) => {
       this.router.navigate(['/']);
       console.log('error', e);
+      usersSub.unsubscribe();
     })
   }
- 
+
   closeWindow():void{
     this.dialogRef.close();
   }
