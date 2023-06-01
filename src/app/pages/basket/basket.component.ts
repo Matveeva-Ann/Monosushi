@@ -13,9 +13,7 @@ export class BasketComponent {
   public priseProd = 0;
   public styleBasket = false;
 
-  constructor(
-    private orderService:OrderServiceService,
-  ){}
+  constructor(private orderService: OrderServiceService) {}
 
   ngOnInit(): void {
     this.loudProducts();
@@ -23,12 +21,16 @@ export class BasketComponent {
 
   loudProducts(): void {
     this.orderProducts = JSON.parse(localStorage.getItem('basket') as string);
-    this.priseProd = this.orderProducts.reduce(
-      (accum: number, elem: IGoodsResponse) =>
-        accum + Number(elem.price) * elem.count, 0);
-    this.orderService.changeBasket.subscribe(()=>{
-    this.loudProducts();
-  })
+    if (this.orderProducts !== null) {
+      this.priseProd = this.orderProducts.reduce(
+        (accum: number, elem: IGoodsResponse) =>
+          accum + Number(elem.price) * elem.count,
+        0
+      );
+      this.orderService.changeBasket.subscribe(() => {
+        this.loudProducts();
+      });
+    }
   }
 
   stopPropagation(event: MouseEvent) {
@@ -44,4 +46,6 @@ export class BasketComponent {
     this.loudProducts();
     this.changeBasket.emit();
   }
+
+
 }

@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-// import { createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -38,7 +37,6 @@ export class RegisterDialogComponent {
     this.initForm();
 
   }
-
 
   closeRegister(): void {
     this.closeWindow();
@@ -104,9 +102,11 @@ export class RegisterDialogComponent {
       })
     }
   }
+
   checkError( name: string): boolean | null{
     return this.signUpForm.controls['userRepeatPassword'].errors?.[name];
   }
+  
   closeWindow(): void {
     this.dialogRef.close();
   }

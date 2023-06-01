@@ -12,7 +12,7 @@ export class HomeComponent {
   private eventSubscription!: Subscription;
   public userProducts: IGoodsResponse[] = [];
   public products: IGoodsResponse[] = [];
-  private categoryRolClick!: string;
+  public categoryRolClick!: string;
 
   constructor(private goodsService: GoodsServiceService) {}
 

@@ -2,7 +2,7 @@
   <div class="container-wrapper">
     <div class="container" *ngFor="let good of userProducts">
       <div class="imgWrapper" [routerLink]="[ '/products/'+good.categoryPath, good.id ]">
-        <img [src]="good.img" alt="" class="img">
+        <img [src]="good.img" alt="{{good.title}}" class="img">
       </div>
       <h3 class="title" [routerLink]="[ '/products/'+good.categoryPath, good.id ]">{{good.title}}</h3>
       <div class="description-wrapper">

@@ -39,7 +39,6 @@ export class HeaderComponent {
     this.loadBasket();
     this.updateBasket();
     this.initLoginForm();
-
     console.log('Логін: admin@gmail.com Пароль: 123123; Логін: user@gmail.com Пароль: 123123')
   }
 
@@ -52,10 +51,16 @@ export class HeaderComponent {
 
   loadBasket(): void {
     const allBasket = JSON.parse(localStorage.getItem('basket') as string);
-    this.countProd = allBasket.length;
-    this.priseProd = allBasket.reduce(
-      (accum: number, elem: IGoodsResponse) =>
-       accum + Number(elem.price) * elem.count, 0);
+    console.log(allBasket)
+    if (allBasket !== null){
+      this.countProd = allBasket.length;
+      this.priseProd = allBasket.reduce(
+        (accum: number, elem: IGoodsResponse) =>
+         accum + Number(elem.price) * elem.count, 0);
+    }else{
+      this.countProd = 0;
+      this.priseProd = 0;
+    } 
   }
 
   login():void{

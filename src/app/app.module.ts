@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthDialogModule } from "./components/header/auth-dialog/auth-dialog.module";
 import { RegisterDialogModule } from "./components/header/register-dialog/register-dialog.module";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -46,6 +47,7 @@ import { AddingPhotoComponent } from './shared/components/adding-photo/adding-ph
     SharedModule,
     AuthDialogModule,
     RegisterDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

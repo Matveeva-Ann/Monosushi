@@ -15,7 +15,7 @@ interface IDataArr {
   styleUrls: ['./bread-crumbs.component.scss']
 })
 export class BreadCrumbsComponent {
-  @Input() way!: any;
+  @Input() way?: any;
 
   public dataArr!: IDataArr;
 
@@ -23,21 +23,22 @@ export class BreadCrumbsComponent {
   ){ }
 
   ngOnInit(): void {
-    if(this.way.categoryPath === 'action'){
+    console.log(this.way);
+    if (this.way.categoryPath === 'action') {
       this.dataArr = {
-        category: "Акції",
+        category: 'Акції',
         categoryPath: 'promotions',
         title: this.way.promoTitle,
         isProduct: '',
-      }
-    } else if (this.way.categoryPath !== 'action'){
+      };
+    } else if (this.way.categoryPath !== 'action') {
       this.dataArr = {
-          category: this.way.category,
-          isProduct: 'products',
-          categoryPath: this.way.categoryPath,
-          title: this.way.title,
-        }
-    }
+        category: this.way.category,
+        isProduct: 'products',
+        categoryPath: this.way.categoryPath,
+        title: this.way.title,
+      };
+    }     
   }
  
 

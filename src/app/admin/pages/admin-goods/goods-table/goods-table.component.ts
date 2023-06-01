@@ -58,14 +58,7 @@ export class GoodsTableComponent {
       this.goodsArr = data;
     });
   }
-  // editProduct(product: IGoodsResponse) {
-  //   this.sendEditProduct.emit(product);
-  // }
-  // deleteProduct(product: IGoodsResponse) {
-  //   this.goodsService.deleteGoods(product.id).subscribe(() => {
-  //     this.getAllGoods();
-  //   });
-  // }
+
   editPress(product:any){
     this.sendEditProduct.emit(product);
   }

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { PromoResolver } from './promo.resolver';
@@ -6,7 +7,11 @@ describe('PromoResolver', () => {
   let resolver: PromoResolver;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+       imports: [
+        HttpClientTestingModule
+       ]
+    });
     resolver = TestBed.inject(PromoResolver);
   });
 

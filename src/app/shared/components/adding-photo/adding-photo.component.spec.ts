@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Storage } from '@angular/fire/storage';
+import { ToastrService } from "ngx-toastr";
 import { AddingPhotoComponent } from './adding-photo.component';
 
 describe('AddingPhotoComponent', () => {
@@ -8,7 +9,11 @@ describe('AddingPhotoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddingPhotoComponent ]
+      declarations: [ AddingPhotoComponent ],
+      providers: [
+        { provide: Storage, useValue: {} },
+        { provide: ToastrService, useValue: {} },
+      ]
     })
     .compileComponents();
 

@@ -11,7 +11,7 @@ export class AdminNavComponent {
   public activeTab = '';
 
   constructor(
-    private router: Router
+    public router: Router
   ){}
 
   ngOnInit(): void {

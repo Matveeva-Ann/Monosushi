@@ -18,7 +18,6 @@ const MATERIAL = [
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ModalWindowComponent } from "./components/modal-window/modal-window.component";
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { SushiNavigationComponent } from "../pages/home/sushi-navigation/sushi-navigation.component";
@@ -32,7 +31,6 @@ import { BreadCrumbsComponent } from "./components/bread-crumbs/bread-crumbs.com
 const otherModules = [
   FormsModule,
   ReactiveFormsModule,
-  HttpClientModule,
   CarouselModule,
 ]
 

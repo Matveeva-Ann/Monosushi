@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminPromotionsComponent } from './admin-promotions.component';
+import { PromotionsTableComponent } from './promotions-table/promotions-table.component';
+import { PromotionsFormaComponent } from './promotions-forma/promotions-forma.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AdminPromotionsComponent', () => {
   let component: AdminPromotionsComponent;
@@ -8,7 +11,14 @@ describe('AdminPromotionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminPromotionsComponent ]
+      declarations: [ 
+        AdminPromotionsComponent,
+        PromotionsTableComponent,
+        PromotionsFormaComponent,
+       ],
+       imports: [
+        HttpClientTestingModule
+       ]
     })
     .compileComponents();
 

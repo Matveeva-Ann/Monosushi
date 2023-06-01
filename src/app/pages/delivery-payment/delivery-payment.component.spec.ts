@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeliveryPaymentComponent } from './delivery-payment.component';
+import { MapComponent } from './map/map.component';
 
 describe('DeliveryPaymentComponent', () => {
   let component: DeliveryPaymentComponent;
@@ -8,7 +9,10 @@ describe('DeliveryPaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliveryPaymentComponent ]
+      declarations: [ 
+        DeliveryPaymentComponent,
+        MapComponent
+       ]
     })
     .compileComponents();
 

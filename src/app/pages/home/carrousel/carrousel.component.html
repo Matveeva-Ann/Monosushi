@@ -2,7 +2,7 @@
   <owl-carousel-o [options]="customOptions" class="slide-wrapper">
     <ng-container *ngFor="let slide of promoArr" >
       <ng-template carouselSlide>
-        <img [src]="slide.imgForHome" class="img" [routerLink]="[ '/promotions', slide.id ]">
+        <img [src]="slide.imgForHome" class="img" [routerLink]="[ '/promotions', slide.id ]" alt="picture promo">
       </ng-template>
     </ng-container>
   </owl-carousel-o>

@@ -1,6 +1,9 @@
 @import "/src/app/shared/styles/variables";
 @import "/src/app/shared/styles/mixins";
 
+header{
+  height: 100%
+}
 .container {
   @include size(100%, 95px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);

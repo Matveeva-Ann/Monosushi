@@ -17,7 +17,7 @@ export class PromotionsTableComponent {
     this.loadPromo();
   }
 
-  private loadPromo(): void {
+  public loadPromo(): void {
     this.promoService.getPromotions().subscribe((data) => {
       this.promotionsArr = data;
     });

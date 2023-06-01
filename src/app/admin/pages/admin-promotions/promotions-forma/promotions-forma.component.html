@@ -21,11 +21,11 @@
     </ng-container>
     <ng-template #elseTemplate>
       <div class="imgWrapper">
-        <img [src]="sendPromo ? sendPromo.img : urlPromo" class="img">
+        <img [src]="sendPromo ? sendPromo.img : urlPromo" alt="cross" class="img">
         <span class="cross" (click)="deleteImg('img')">&times;</span>  
       </div>
       <div class="imgWrapper">
-        <img [src]="sendPromo ? sendPromo.imgForHome : urlPromoHome" class="img">
+        <img [src]="sendPromo ? sendPromo.imgForHome : urlPromoHome" alt="cross" class="img">
         <span class="cross" (click)="deleteImg('imgForHome')">&times;</span>  
       </div>
     </ng-template>

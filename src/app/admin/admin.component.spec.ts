@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 
 import { AdminComponent } from './admin.component';
 
@@ -8,7 +10,16 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ 
+        AdminComponent,
+        AdminNavComponent,
+       ],
+       imports: [
+        RouterModule,
+      ],
+      providers: [
+        { provide: ActivatedRoute, useValue: {}  },
+      ]
     })
     .compileComponents();
 

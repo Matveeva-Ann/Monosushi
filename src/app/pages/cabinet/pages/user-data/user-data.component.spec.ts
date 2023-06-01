@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { UserDataComponent } from './user-data.component';
 
@@ -8,7 +9,8 @@ describe('UserDataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserDataComponent ]
+      declarations: [ UserDataComponent ],
+      imports: [ReactiveFormsModule],
     })
     .compileComponents();
 

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminNavComponent } from './admin-nav.component';
 
@@ -7,8 +9,12 @@ describe('AdminNavComponent', () => {
   let fixture: ComponentFixture<AdminNavComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      declarations: [ AdminNavComponent ]
+      declarations: [ AdminNavComponent ],
+      imports: [
+        RouterTestingModule,
+      ],
     })
     .compileComponents();
 
@@ -20,4 +26,9 @@ describe('AdminNavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
+
+
+
+

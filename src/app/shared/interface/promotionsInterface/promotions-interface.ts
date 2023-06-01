@@ -5,7 +5,7 @@ export interface IPromoRequest {
   img:string,
   imgForHome: string,
   date: string,
-  categoryPath: string,
+  categoryPath?: string,
 }
 
 export interface IPromoResponse extends IPromoRequest{

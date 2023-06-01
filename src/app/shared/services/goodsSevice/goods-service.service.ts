@@ -24,12 +24,9 @@ export class GoodsServiceService{
   getOneGood(id: number): Observable<IGoodsResponse>{
     return this.http.get<IGoodsResponse>(`${this.api.goods}/${id}`);
   }
-
-
   addGoods(goods: IGoodsRequest): Observable<IGoodsRequest>{
     return this.http.post<IGoodsRequest>(this.api.goods, goods);
   }
-
   deleteGoods(id:number): Observable<void>{
     return this.http.delete<void>(`${this.api.goods}/${id}`);
   }
@@ -39,5 +36,5 @@ export class GoodsServiceService{
   }
 
 
-  
+
 }

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 
 import { InfoComponent } from './info.component';
 
@@ -8,7 +9,13 @@ describe('InfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoComponent ]
+      declarations: [ InfoComponent ],
+      imports:[
+        RouterModule
+      ],
+      providers: [
+        { provide: ActivatedRoute, useValue: {}  },
+      ]
     })
     .compileComponents();
 
