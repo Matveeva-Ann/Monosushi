@@ -49,15 +49,17 @@ export class ProductsComponent {
 
   loadGoods():void{
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    console.log(categoryName)
     if (categoryName === 'roli'){
       this.showSushiNavigation = true;
     }else{
       this.showSushiNavigation = false;
     }
     this.goodsService.getGoodsByCategory(categoryName).subscribe((data)=>{
-      this.userProducts = data;
+      console.log(data)
+      this.userProducts = data as IGoodsResponse[];
       this.products = this.userProducts;
-      this.categoryTitle = data[0].category;
+      this.categoryTitle = data[0]['category'];
     })
   }
 

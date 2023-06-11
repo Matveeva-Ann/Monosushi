@@ -14,5 +14,5 @@ export interface IGoodsRequest {
 }
 
 export interface IGoodsResponse extends IGoodsRequest {
-  id: number;
+  id: string;
 }

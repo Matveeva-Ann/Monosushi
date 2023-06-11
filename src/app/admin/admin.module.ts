@@ -16,7 +16,8 @@ import { CategoryTableComponent } from './pages/admin-category/category-table/ca
 import { CategoryFormComponent } from './pages/admin-category/category-form/category-form.component';
 import { PromotionsTableComponent } from './pages/admin-promotions/promotions-table/promotions-table.component';
 import { PromotionsFormaComponent } from './pages/admin-promotions/promotions-forma/promotions-forma.component';
-import {AdminAuthModule} from "./admin-auth/admin-auth.module";
+import { AdminAuthModule } from "./admin-auth/admin-auth.module";
+import { AdminCallBackComponent } from './pages/admin-call-back/admin-call-back.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AdminAuthModule} from "./admin-auth/admin-auth.module";
     CategoryFormComponent,
     PromotionsTableComponent,
     PromotionsFormaComponent,
+    AdminCallBackComponent,
   ],
   imports: [
     CommonModule,

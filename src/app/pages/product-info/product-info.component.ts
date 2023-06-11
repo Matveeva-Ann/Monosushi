@@ -11,12 +11,13 @@ export class ProductInfoComponent {
   public currentProduct!: IGoodsResponse;
   public showIngredients = true;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response) => {
       this.currentProduct = response['productInfo'];
-
       if (this.currentProduct.ingredients === null) {
         this.showIngredients = false;
       } else {

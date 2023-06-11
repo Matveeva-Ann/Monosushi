@@ -34,10 +34,8 @@ export class HomeComponent {
   }
 
   async loadGoods() {
-    this.eventSubscription = this.goodsService
-      .getGoodsByCategory('roli')
-      .subscribe((data) => {
-         this.userProducts = data;
+    this.eventSubscription = this.goodsService.getGoodsByCategory('roli').subscribe((data) => {
+         this.userProducts = data as IGoodsResponse[];
          this.products = this.userProducts;
       });
   }

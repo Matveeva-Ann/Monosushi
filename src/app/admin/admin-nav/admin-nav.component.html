@@ -1,9 +1,20 @@
 <div class="container">
   <ul class="list">
-    <li class="list-item" [routerLink]="[ 'promotions' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'promotions'}"  (click)="click('promotions')">Акції</li>
-    <li class="list-item" [routerLink]="[ 'category' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'category'}" (click)="click('category')">Категорії</li>
-    <li class="list-item" [routerLink]="[ 'goods' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'goods'}" (click)="click('goods')">Товари</li>
-    <li class="list-item" [routerLink]="[ 'order' ]" routerLinkActive="active" [ngClass]="{'active': activeTab === 'order'}" (click)="click('order')">Замовлення</li>
+    <li class="list-item" [ngClass]="{'active': activeTab === 'promotions'}" routerLinkActive="active">
+      <a class="list-item-link" [routerLink]="[ 'promotions' ]" (click)="click('promotions')">Акції</a>
+    </li>
+    <li class="list-item" routerLinkActive="active" [ngClass]="{'active': activeTab === 'category'}">
+      <a class="list-item-link" [routerLink]="[ 'category' ]" (click)="click('category')">Категорії</a>
+    </li>
+    <li class="list-item" routerLinkActive="active" [ngClass]="{'active': activeTab === 'goods'}">
+      <a class="list-item-link" [routerLink]="[ 'goods' ]" (click)="click('goods')">Товари</a>
+    </li>
+    <li class="list-item" routerLinkActive="active" [ngClass]="{'active': activeTab === 'order'}">
+      <a class="list-item-link" (click)="click('order')" [routerLink]="[ 'order' ]">Замовлення</a>
+    </li>
+    <li class="list-item" routerLinkActive="active" [ngClass]="{'active': activeTab === 'callBack'}">
+      <a class="list-item-link" (click)="click('callBack')" [routerLink]="[ 'callBack' ]">Передзвонити</a>
+    </li>
   </ul>
   <button class="btn" (click)="logout()">Вихід</button>
 </div>

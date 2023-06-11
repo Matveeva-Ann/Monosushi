@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CollectionReference } from '@angular/fire/firestore';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable,} from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoryResponse } from 'src/app/shared/interface/categoryInterface/category-interface';
@@ -15,7 +16,7 @@ export class CategoryFormComponent {
 
   public categoryForm!: FormGroup;
   public editStatus = false;
-  private idCategory = 0;
+  private idCategory = '0';
   public addedFile = false;
   public uploadPercent = 0;
   public url = '';
@@ -23,8 +24,9 @@ export class CategoryFormComponent {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryServiceService,
-    private storage: Storage
-  ) {}
+    private storage: Storage,
+   
+  ) {  }
 
   ngOnInit(): void {
     this.initCategory();
@@ -52,9 +54,9 @@ export class CategoryFormComponent {
     if (this.editStatus) {
       this.categoryService
         .updateCategory(this.categoryForm.value, this.idCategory)
-        .subscribe();
+        .then();
     } else {
-      this.categoryService.addCategory(this.categoryForm.value).subscribe();
+      this.categoryService.addCategory(this.categoryForm.value).then();
     }
     this.editStatus = false;
     this.categoryForm.reset();
@@ -85,6 +87,7 @@ export class CategoryFormComponent {
   }
   deleteImg():void{
     const task = ref(this.storage, this.valueByControl('img'));
+    console.log(task)
     this.uploadPercent = 0;
     deleteObject(task).then (()=>{
       this.addedFile = false;
@@ -94,6 +97,8 @@ export class CategoryFormComponent {
     })
   }
   valueByControl(control: string): string {
+    console.log(control)
+   
     return this.categoryForm.get(control)?.value;
   }
   

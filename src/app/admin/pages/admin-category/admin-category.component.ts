@@ -20,7 +20,7 @@ export class AdminCategoryComponent {
 
  async loadCategories() {
       this.categoryService.getCategory().subscribe((data) => {
-        this.categoryArr = data;
+        this.categoryArr = data as ICategoryResponse[];
       });
     }
 

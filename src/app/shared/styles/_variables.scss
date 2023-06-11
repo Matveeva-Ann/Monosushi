@@ -14,6 +14,16 @@ $lightGray: rgba(255, 255, 255, 0.4);
   justify-content: center;
   align-items: center;
 }
+%listStyle{
+  list-style: none;
+  color: $darkGrayText;
+}
+
+%linkStyle{
+  color: $darkGrayText;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 %textSelection {
   &::selection {

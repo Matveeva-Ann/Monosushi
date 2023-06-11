@@ -55,7 +55,7 @@ export class GoodsTableComponent {
   }
   getAllGoods() {
     this.goodsService.getGoods().subscribe((data) => {
-      this.goodsArr = data;
+      this.goodsArr = data as IGoodsResponse[];
     });
   }
 
@@ -63,7 +63,7 @@ export class GoodsTableComponent {
     this.sendEditProduct.emit(product);
   }
   deletePress(product: any){
-    this.goodsService.deleteGoods(product.id).subscribe(() => {
+    this.goodsService.deleteGoods(product.id).then(() => {
       this.getAllGoods();
     });
   }

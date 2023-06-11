@@ -1,6 +1,23 @@
 @import "/src/app/shared/styles/variables";
 @import "/src/app/shared/styles/mixins";
 
+a {
+  @extend %linkStyle;
+  color: $black;
+  display: block;
+}
+
+li{
+  @extend %listStyle;
+  margin-top: 4px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 9px;
+  transition-duration: 0.5s;
+  &:hover {
+    border: 2px solid $mainColor;
+  }
+}
 
 .burger {
   position: relative;
@@ -17,7 +34,6 @@
     @media (max-width: 1200px) {
       border: none;
       @include size(30px, 34px);
-
       padding: 0px;
     }
     &:hover {
@@ -46,19 +62,6 @@
     padding: 9px;
     &:hover {
       border: none;
-    }
-  
-  }
-  &-item {
-    cursor: pointer;
-    list-style: none;
-    margin-top: 4px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    padding: 9px;
-    transition-duration: 0.5s;
-    &:hover {
-      border: 2px solid $mainColor;
     }
   }
 }

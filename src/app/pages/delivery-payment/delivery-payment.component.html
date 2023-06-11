@@ -1,8 +1,9 @@
 <div class="container">
-  <h2 class="title">Доставка та оплата</h2>
-  <div class="zones">
+  <h1 class="title">Доставка та оплата</h1>
+
+  <section aria-describedby="zones-description" class="zones">
     <div class="zone">
-      <img src="/assets/img/mn-delivery-img.svg" alt="delivery" class="zone-img">
+      <img src="/assets/img/mn-delivery-img.svg" alt="delivery" class="zone-img" aria-hidden="false">
       <ul class="zone-list">
         <li class="green zone-title">Зелена зона</li>
         <li class="zone-text">В межах зеленої зони ми доставляємо протягом <span class="green">1 год.</span></li>
@@ -10,24 +11,28 @@
       </ul>
     </div>
     <div class="zone">
-      <img src="/assets/img/mn-delivery-img.svg" alt="delivery" class="zone-img">
+      <img src="/assets/img/mn-delivery-img.svg" alt="delivery" class="zone-img" aria-hidden="false">
       <ul class="zone-list">
         <li class="yellow zone-title">Жовта зона</li>
         <li class="zone-text">В межах жовтої зони ми доставляємо протягом <span class="yellow">1.5 год.</span></li>
         <li class="zone-text">Мінімальна сума замовлення в цю зону становить <span class="yellow">400 грн.</span></li>
       </ul>
     </div>
-  </div>
+  </section>
   <app-map class="map"></app-map>
 
-
-  <div class="wrapper">
+  <section class="wrapper" id="zones-description">
     <p class="text">Команда «Monosushi» пропонує надзвичайно зручну систему доставки та оплати. Чіткість наших
       стандартів роботи забезпечує швидке і якісне виконання замовлень для наших гостей.</p>
     <p class="text">Ми поділили Львів на умовні зони доставки – зелену та жовту. Для кожної зони ми чітко визначаємо час
       доставки.
       Зелена зона доставки знаходиться ближче до нашої кухні, тому замовлення в цю зону доставляються – до 1 год. В
       жовту зону, яка знаходиться значно далі – до 1,5 год.</p>
+  </section>
+
+
+
+  <section class="wrapper">
     <h2 class="payment">Оплата</h2>
     <div class="payment-wrapper">
       <div class="cashless">
@@ -55,5 +60,6 @@
       повідомте про це оператора по телефону.</p>
     <p class="text">Доставка «Моносуші» – це чіткі стандарти роботи, високий рівень сервісу та турбота про кожного
       гостя. Ми щодня розвиваємось, щоб почути лише три слова «Моносуші – це любов».</p>
-  </div>
+  </section>
+
 </div>

@@ -39,7 +39,7 @@ export class CategoryTableComponent {
 
   loadCategories(): void {
     this.categoryService.getCategory().subscribe((data) => {
-      this.categoryArr = data;
+      this.categoryArr = data as ICategoryResponse[];
     });
   }
 
@@ -48,7 +48,7 @@ export class CategoryTableComponent {
   }
 
   deletePress(category: ICategoryResponse): void {
-    this.categoryService.deleteCategory(category.id).subscribe(() => {
+    this.categoryService.deleteCategory(category.id).then(() => {
       this.loadCategories();
     });
   }

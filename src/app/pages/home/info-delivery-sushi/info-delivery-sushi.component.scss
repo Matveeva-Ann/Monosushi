@@ -47,6 +47,12 @@
 .bold {
   font-weight: 700;
   color: $black;
+  display: inline-block;
+}
+
+dd{
+  display: inline;
+  margin-left: 6px;
 }
 .learnMore,
 .rollUp {

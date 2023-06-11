@@ -22,7 +22,7 @@ export class GoodsFormComponent {
   public editStatus = false;
   public selectedCategory = '';
   public url = '';
-  private idEditedProduct = 0;
+  private idEditedProduct = '0';
   public category = '';
   public categoryRoli = false;
   public sendEditImg!: string
@@ -101,9 +101,9 @@ export class GoodsFormComponent {
     })
 
     if (this.editProduct){
-      this.goodsService.updateGoods(this.goodsForm.value, this.idEditedProduct).subscribe();
+      this.goodsService.updateGoods(this.goodsForm.value, this.idEditedProduct).then();
     }else{
-      this.goodsService.addGoods(this.goodsForm.value).subscribe(()=>{});
+      this.goodsService.addGoods(this.goodsForm.value).then(()=>{});
     }
     this.addedFile = false;
     this.editStatus = false;
@@ -113,7 +113,8 @@ export class GoodsFormComponent {
 
   getCategories() {
     this.categoryService.getCategory().subscribe((data) => {
-      this.allCategories = data;
+      console.log(data)
+      this.allCategories = data as ICategoryResponse[];
     });
   }
 

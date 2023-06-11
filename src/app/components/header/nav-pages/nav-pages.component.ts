@@ -19,7 +19,7 @@ export class NavPagesComponent {
 
   private allCategories(){
     this.categoryService.getCategory().subscribe(data=>{
-      this.categoriesArr = data;
+      this.categoriesArr = data as ICategoryResponse[];
     })
   }
 

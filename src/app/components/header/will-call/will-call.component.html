@@ -2,9 +2,11 @@
   <div class="content">
     <h3 class="content-title"> МИ ЗАТЕЛЕФОНУЄМО</h3>
     <p class="content-text">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
-    <input type="text" class="content-input" placeholder="Ваше ім’я">
+
+    <input type="text" class="content-input" placeholder="Ваше ім’я" [(ngModel)]="name">
     <input type="tel" ngx-mask="" class="content-input phoneNumber" placeholder="Ваш номер телефону"
-    [textMask]="{mask: phoneMask}"> 
-    <button type="button" class="content-input btn">надіслати</button>
+      [textMask]="{mask: phoneMask}" [(ngModel)]="phone">
+    <button type="button" class="content-input btn" (click)="sendPhoneNumber()">надіслати</button>
+
   </div>
 </app-modal-window>

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-order.component.scss']
 })
 export class AdminOrderComponent {
-
+ 
 }
