@@ -13,7 +13,8 @@
       <a class="list-item-link" (click)="click('order')" [routerLink]="[ 'order' ]">Замовлення</a>
     </li>
     <li class="list-item" routerLinkActive="active" [ngClass]="{'active': activeTab === 'callBack'}">
-      <a class="list-item-link" (click)="click('callBack')" [routerLink]="[ 'callBack' ]">Передзвонити</a>
+      <a class="list-item-link " (click)="click('callBack')" [routerLink]="[ 'callBack' ]">Передзвонити</a>
+      <span class="list-item-callBack" *ngIf="callsUnit!==0">{{callsUnit}}</span>
     </li>
   </ul>
   <button class="btn" (click)="logout()">Вихід</button>

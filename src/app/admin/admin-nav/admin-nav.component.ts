@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { CallBackService } from 'src/app/shared/services/callBack/call-back.service';
 
 @Component({
   selector: 'app-admin-nav',
@@ -9,13 +10,17 @@ import { Router } from '@angular/router';
 export class AdminNavComponent {
 
   public activeTab = '';
+  public callsUnit = 0;
 
   constructor(
-    public router: Router
+    public router: Router,
+    private callBackService: CallBackService
   ){}
 
   ngOnInit(): void {
-
+    this.callBackService.getPhoneData().subscribe((data) => {
+      this.callsUnit = data.length;
+    });
   }
   click(clickElem:string):void{
     this.activeTab=clickElem;

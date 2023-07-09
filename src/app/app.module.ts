@@ -23,6 +23,7 @@ import { NavPagesComponent } from './components/header/nav-pages/nav-pages.compo
 import { BasketComponent } from './pages/basket/basket.component';
 
 import { AddingPhotoComponent } from './shared/components/adding-photo/adding-photo.component';
+import { OrderComponent } from './pages/order/order.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AddingPhotoComponent } from './shared/components/adding-photo/adding-ph
     NavPagesComponent,
     AddingPhotoComponent,
     BasketComponent,
+    OrderComponent,
  ],
   imports: [
     BrowserModule,

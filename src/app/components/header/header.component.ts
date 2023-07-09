@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -39,9 +39,13 @@ export class HeaderComponent {
     this.loadBasket();
     this.updateBasket();
     this.initLoginForm();
-    console.log('Логін: admin@gmail.com Пароль: 123123; Логін: user@gmail.com Пароль: 123123')
+    console.log('Логін: admin@gmail.com Пароль: 123123; Логін: user@gmail.com Пароль: 123123');
   }
 
+  ngDoCheck(): void {
+    this.loadBasket();
+  }
+ 
   initLoginForm():void{
     this.loginForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
@@ -51,7 +55,6 @@ export class HeaderComponent {
 
   loadBasket(): void {
     const allBasket = JSON.parse(localStorage.getItem('basket') as string);
-    console.log(allBasket)
     if (allBasket !== null){
       this.countProd = allBasket.length;
       this.priseProd = allBasket.reduce(

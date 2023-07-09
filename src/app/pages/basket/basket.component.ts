@@ -34,8 +34,12 @@ export class BasketComponent {
   }
 
   stopPropagation(event: MouseEvent) {
+    if (event.target instanceof HTMLAnchorElement) {
+      return
+    }
     event.stopPropagation();
   }
+ 
 
   deleteProduct(product: IGoodsResponse): void {
     const index = this.orderProducts.findIndex(

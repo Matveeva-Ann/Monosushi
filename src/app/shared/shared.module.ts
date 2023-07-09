@@ -7,13 +7,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ToastrModule } from 'ngx-toastr';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 const MATERIAL = [
   MatDialogModule,
   MatFormFieldModule,
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MatTableModule,
+  MatIconModule
 ]
 
 import { FormsModule } from '@angular/forms';
@@ -23,7 +32,6 @@ import { CarouselModule } from "ngx-owl-carousel-o";
 import { SushiNavigationComponent } from "../pages/home/sushi-navigation/sushi-navigation.component";
 import { ControlsComponent } from "./components/controls/controls.component";
 import { BreadCrumbsComponent } from "./components/bread-crumbs/bread-crumbs.component";
-
 
 
 
@@ -55,8 +63,11 @@ const otherModules = [
     CommonModule,
     RouterModule,
     ToastrModule.forRoot(),
-
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'uk-UA'}
   ]
+
 })
 
 export class SharedModule {}

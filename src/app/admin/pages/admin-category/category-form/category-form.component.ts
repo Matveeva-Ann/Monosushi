@@ -87,7 +87,6 @@ export class CategoryFormComponent {
   }
   deleteImg():void{
     const task = ref(this.storage, this.valueByControl('img'));
-    console.log(task)
     this.uploadPercent = 0;
     deleteObject(task).then (()=>{
       this.addedFile = false;
@@ -96,9 +95,7 @@ export class CategoryFormComponent {
       })
     })
   }
-  valueByControl(control: string): string {
-    console.log(control)
-   
+  valueByControl(control: string): string {  
     return this.categoryForm.get(control)?.value;
   }
   

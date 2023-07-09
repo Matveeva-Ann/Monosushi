@@ -1,0 +1,118 @@
+
+<section class="order-section">
+  <h2 class="section-title bold"> Оформити замовлення</h2>
+  <ul class="list">
+    <li class="list-item" *ngFor="let product of orderProducts">
+      <div class="product-wrapper">
+        <img [src]="product.img" alt="" class="list-img">
+        <p class="list-title bold">{{ product.title }}</p>
+      </div>
+      <div class="product-wrapper">
+        <app-controls [currentProduct]="product" [styleBasket]="styleBasket"></app-controls>
+        <img src="/assets/img/trash.svg" alt="trash" class="trash" (click)="deleteProduct(product)">
+      </div>
+    </li>
+  </ul>
+  <p class="order-sum">До оплати:<span class="bold orderAmount">{{ priseProd }}</span>грн</p>
+
+  <form name="userDataForm" class="userDataForm" [formGroup]="formOrder" (ngSubmit)="addOrder()">
+    <h3 class="subheadings bold">Оберіть кількість приборів</h3>
+    <div class="indentation">
+      <select name="numberDevices" class="field distanceInput" formControlName = "numberDevices">
+        <option class="numberDevicesOption" value="1">1</option>
+        <option class="numberDevicesOption" value="2">2</option>
+        <option class="numberDevicesOption" value="3">3</option>
+        <option class="numberDevicesOption" value="4">4</option>
+        <option class="numberDevicesOption" value="5">5</option>
+        <option class="numberDevicesOption" value="6">6</option>
+        <option class="numberDevicesOption" value="7">7</option>
+        <option class="numberDevicesOption" value="8">8</option>
+        <option class="numberDevicesOption" value="9">9</option>
+        <option class="numberDevicesOption" value="10">10</option>
+      </select>
+      <select name="trainingHolders" class="field" formControlName = "trainingHolders">
+        <option value="Навчальні тримачі" selected disabled>Навчальні тримачі</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+    </div>
+    <h3 class="subheadings bold paymentMethod">Спосіб оплати</h3>
+
+    <div class="indentation">
+      <input type="radio" class="choose" name="paymentMethod" value="Готівкою" id="cash" formControlName="paymentMethod" checked>
+      <label for="cash" class="chooseLabel">Оплата готівкою</label>
+    
+      <input type="radio" class="choose" name="paymentMethod" value="Безготівкова оплата" id="cashless" formControlName="paymentMethod">
+      <label for="cashless" class="chooseLabel">Безготівкова оплата</label>
+    </div>
+    
+
+    <h3 class="subheadings bold deliveryMethod">Спосіб доставки</h3>
+    <input type="radio" class="choose" name="methodDelivery" id="delivery"  value="доставка" formControlName="methodDelivery" checked>
+    <label for="delivery" class="chooseLabel delivery" >Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається тільки до п’ятого поверху. Дякуємо за розуміння)</label>
+    <div class="chooseLabelWrapper">
+      <input type="radio" class="choose" name="methodDelivery" id="pickup" value="сомовивіз" formControlName="methodDelivery">
+      <label for="pickup" class="chooseLabel">Самовивіз ( "Запечені моно макі з лососем" в
+        подарунок )</label>
+    
+      <input type="checkbox" name="advance" class="choose" id="advance" formControlName="advance">
+      <label for="advance" class="chooseLabel">Заздалегідь</label>
+    </div>
+    
+
+    <div>
+      <input type="text" placeholder="Ваше ім’я*" class="field distanceInput" name="userName" formControlName="userName">
+      <input type="text" placeholder="Телефон*" class="field verticalDistance" name="userPhone" formControlName="userPhone">
+      <div *ngIf="this.formOrder.value['advance']" class="verticalDistance matFieldWrapper">
+        <mat-form-field class="example-form-field field distanceInput">
+          <input matInput [matDatepicker]="datepicker" [matDatepickerFilter]="dateFilter" class="input" name="deliveryDate" formControlName="deliveryDate" placeholder="Дата доставки*">
+          <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-select name="deliveryInterval" formControlName="deliveryInterval"> 
+            <mat-option value="time interval" disabled> Часовий інтервал* </mat-option>
+            <mat-option *ngFor="let interval of generateTimeIntervals(startTime, endTime, intervalMinutes)" [value]="interval"> {{ interval }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <input type="text" placeholder="Вулиця*" *ngIf="this.formOrder.value['methodDelivery'] === 'доставка'" class="field distanceInput" name="userStreet" formControlName="userStreet" >
+      <input type="text" placeholder="Номер будинку*" *ngIf="this.formOrder.value['methodDelivery'] === 'доставка'" class="field verticalDistance" name="userHouseNumber" formControlName="userHouseNumber">
+      <input type="text" placeholder="Під'їзд*" *ngIf="this.formOrder.value['methodDelivery'] === 'доставка'" class="field distanceInput" name="userEntrance" formControlName="userEntrance">
+      <input type="text" placeholder="Квартира*" *ngIf="this.formOrder.value['methodDelivery'] === 'доставка'" class="field verticalDistance" name="userApartment" formControlName="userApartment">
+    
+      <mat-form-field class="example-form-field adress" *ngIf="this.formOrder.value['methodDelivery'] === 'сомовивіз'">
+        <mat-label>Оберіть адресу самовивозу </mat-label>
+        <mat-select  name="pickUpAddress" formControlName="pickUpAddress">
+          <mat-option value="Чорновола 95"> Чорновола 95 </mat-option>
+          <mat-option value="Володимира Великого 10Б"> Володимира Великого 10Б </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <hr class="hr">
+    <div>
+      <input type="checkbox" class="choose" id="callForDetails" name="callMe" formControlName="callMe">
+      <label for="callForDetails" class="chooseLabel checkbox-entry-wrap">Зателефонуйте мені для уточнення деталей</label>
+      <input type="checkbox" class="choose" id="comment" name="comment" >
+      <label for="comment" class="chooseLabel checkbox-entry-wrap">Додати коментар</label>
+      <div class="fieldWrapper">
+        <textarea name="userComment" class="commentArea" formControlName="userComment"></textarea>
+      </div>
+      <input type="checkbox" class="choose forPopupField" name="forKitchen" id="forKitchen" >
+      <label for="forKitchen" class="chooseLabel checkbox-entry-wrap">Додати коментар для кухні</label>
+      <div class="fieldWrapperSecond">
+        <textarea name="commentKitchen" class="commentArea" formControlName="commentKitchen"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="orderBtn" [disabled]="formOrder.invalid">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+  </form>
+</section>
+

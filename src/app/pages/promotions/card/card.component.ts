@@ -18,7 +18,7 @@ export class CardComponent {
 
   loudPromotions():void{
     this.promotionsService.getPromotions().subscribe(data=>{
-      this.cardsArr = data;
+      this.cardsArr = data as IPromoResponse[];
     })
   }
 }

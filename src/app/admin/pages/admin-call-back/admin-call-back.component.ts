@@ -22,7 +22,6 @@ export class AdminCallBackComponent {
 
   async loadPhoneData() {
     this.callBackService.getPhoneData().subscribe((data) => {
-      console.log(data)
       this.dataArr = data as any;
     });
   }

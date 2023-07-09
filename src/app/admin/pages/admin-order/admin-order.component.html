@@ -1,0 +1,105 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+
+    <td mat-cell *matCellDef="let element; index as i">
+      {{column === '№' ? element.orderNumber : ''}}
+      {{column === 'Контактні дані замовника' ? element.userName+', '+'тел:'+element.userPhone: ''}}
+      {{column === 'Спосіб доставки' ? element.methodDelivery : ''}}
+      {{column === 'Спосіб оплати' ? element.paymentMethod : ''}}
+      {{column === 'Адреса' ? element.address : ''}}
+      {{column === 'Уточнення деталей' ? element.callMe : ''}}
+      {{column === 'Статус замовлення' ? element.orderStatus : ''}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row"
+        (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length" style="border-top: 1px dashed #dcdcdc;">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram" style="display: flex; justify-content: space-between; gap:20px;">
+          <div class="example-element-position"><span>Замовлення:</span>
+            <div *ngFor="let item of element.orderProducts, index as i">
+              <p>{{i+1}}. {{item.category}}, {{item.title}}, {{item.count}}шт., ціна:{{item.price * item.count}}грн.</p>
+            </div>
+            <div>
+              Загальна сума замовлення: <span style="font-weight: bold; color: rgb(167, 0, 0);">{{element.priseProd}}грн.</span>
+            </div>
+          </div>
+          <div class="example-element-symbol" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+            <div>
+              <span>Кількість приборів:</span> {{element.numberDevices}}, навчальних - {{element.trainingHolders}}
+            </div>
+            <div>
+              <button class="btn btn-work" (click)="btnStatus('В роботі', element, element.id)">В роботі</button>
+              <button class="btn btn-done" (click)="btnStatus('Виконане', element, element.id)">Виконане </button>
+            </div>
+          </div>
+          <div class="example-element-name" style="max-width: 400px;"> <span>Коментар для кухні:</span>
+            {{element.commentKitchen}} </div>
+          <div class="example-element-weight" style="max-width: 400px;"> <span>Коментар користувача:</span>
+            {{element.userComment}} </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row">Lorem ipsum dolor sit amet.
+  </tr>
+</table>
+
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th class="header-th">№</th>
+      <th class="header-th">Замовлення</th>
+      <th class="header-th">Кількість приборів (в т.ч. навчальних)</th>
+      <th class="header-th">Спосіб доставки</th>
+      <th class="header-th">Адреса</th>
+      <th class="header-th">Контактні дані замовника</th>
+      <th class="header-th">Спосіб оплати</th>
+      <th class="header-th">Уточнення деталей</th>
+      <th class="header-th">Коментар</th>
+      <th class="header-th">Коментар для кухні</th>
+      <th class="header-th">Статус замовлення</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elem of ordersArr; index as i">
+      <td class="body-td">{{i+1}}</td>
+      <td class="body-td">{{elem.orderProducts}}</td>
+      <td class="body-td">{{elem.numberDevices}}, навчальних -{{elem.trainingHolders}}</td>
+      <td class="body-td">{{elem.methodDelivery}}</td>
+      <td class="body-td">{{elem.address }}</td>
+      <td class="body-td">{{elem.userName}} {{elem.userPhone}}</td>
+      <td class="body-td">{{elem.paymentMethod}}</td>
+      <td class="body-td">{{elem.callMe}}</td>
+      <td class="body-td cursor" title="{{elem.userComment}}" >{{ elem.userComment | slice:0:20 }} <span *ngIf="elem.userComment.length > 20">...</span></td>
+      <td class="body-td">{{elem.commentKitchen}}</td>
+      <td class="body-td">Нове</td>
+      <td class="body-td">
+        <img [src]="elem.img" alt="img" class="body-td-img">
+      </td>
+      <td class="body-td">
+        <button class="edit body-td-btn" (click)="edit(elem)">Редагувати</button>
+        <button class="delete body-td-btn" (click)="delete(elem)" >Видалити</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->

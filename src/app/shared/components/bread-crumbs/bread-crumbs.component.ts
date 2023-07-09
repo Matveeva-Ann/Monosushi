@@ -23,7 +23,6 @@ export class BreadCrumbsComponent {
   ){ }
 
   ngOnInit(): void {
-    console.log(this.way);
     if (this.way.categoryPath === 'action') {
       this.dataArr = {
         category: 'Акції',

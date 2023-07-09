@@ -113,7 +113,6 @@ export class GoodsFormComponent {
 
   getCategories() {
     this.categoryService.getCategory().subscribe((data) => {
-      console.log(data)
       this.allCategories = data as ICategoryResponse[];
     });
   }

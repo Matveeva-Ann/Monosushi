@@ -9,5 +9,5 @@ export interface IPromoRequest {
 }
 
 export interface IPromoResponse extends IPromoRequest{
-  id: number
+  id: string,
 }

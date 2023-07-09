@@ -19,7 +19,7 @@ export class PromotionsTableComponent {
 
   public loadPromo(): void {
     this.promoService.getPromotions().subscribe((data) => {
-      this.promotionsArr = data;
+      this.promotionsArr = data as IPromoResponse[];
     });
   }
 
@@ -28,7 +28,7 @@ export class PromotionsTableComponent {
   }
 
   public deletePromo(promo: IPromoResponse): void {
-    this.promoService.deletePromo(promo.id).subscribe(() => {
+    this.promoService.deletePromo(promo.id).then(() => {
       this.loadPromo();
     });
   }  

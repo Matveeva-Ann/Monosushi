@@ -27,7 +27,7 @@ export class PromotionsFormaComponent {
   public uploadPercent = 0;
   public uploadPercentIMGForHome = 0;
   public editStatus = false;
-  private idPromo = 0;
+  private idPromo = '0';
   public urlPromo = '';
   public urlPromoHome = '';
 
@@ -51,7 +51,7 @@ export class PromotionsFormaComponent {
       imgForHome: [null, Validators.required],
       date: [null],
     });
-    if (this.sendPromo) {
+    if (this.sendPromo) {``
       this.editStatus = true;
       this.addedFile = true;
       this.idPromo = this.sendPromo.id;
@@ -66,13 +66,14 @@ export class PromotionsFormaComponent {
   }
 
   public addPromo() {
-    this.promoForm.value.date = new Date();
+    this.promoForm.value.date = new Date().getTime();
+    console.log(this.promoForm.value.date )
     if (this.sendPromo) {
       this.promoService
         .updatePromo(this.promoForm.value, this.idPromo)
-        .subscribe();
+        .then();
     } else {
-      this.promoService.addPromo(this.promoForm.value).subscribe();
+      this.promoService.addPromo(this.promoForm.value).then();
     }
     this.promoForm.reset();
     this.toggleWindow.emit();

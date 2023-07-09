@@ -10,8 +10,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let promo of promotionsArr">
-      <td class="body-td">{{promo.date | date: 'dd.MM.YYYY'}}</td>
+    <tr *ngFor="let promo of promotionsArr; index as i">
+      <!-- <td class="body-td">{{promo.date | date: 'dd.MM.YYYY'}}</td> -->
+      <!-- <td class="body-td">{{ promo.date?.seconds * 1000 | date: 'dd.MM.yyyy' }}</td> -->
+      <td class="body-td">{{i+1}}</td>
       <td class="body-td">{{promo.promoPath}}</td>
       <td class="body-td">{{promo.promoTitle}}</td>
       <td class="body-td">{{promo.description | slice:0:110}} <span *ngIf="promo.description.length>110">...</span></td>

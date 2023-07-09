@@ -16,14 +16,11 @@ export class WillCallComponent {
   public name = '';
   public phone = 0;
 
-  // private phoneNumber!: CollectionReference<DocumentData>;
   constructor(
     private callBackService: CallBackService
-  ){
-    // this.phoneNumber = collection(this.afs, 'callBack');
-  }
+  ){  }
 
-  phoneMask = ['+', '3', '8', ' ', '(', '0', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  phoneMask = ['+', '3', '8', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   
   public closeWindow(){
     this.willCall = false;
@@ -31,12 +28,14 @@ export class WillCallComponent {
   }
 
   public sendPhoneNumber(){
-    this.willCall = false;
-    const userData = {
-      name: this.name,
-      phone: this.phone,
+    if (this.name !== '' && this.phone !==0){
+      this.willCall = false;
+      this.closeFormCall.emit();
+      const userData = {
+        name: this.name,
+        phone: this.phone,
+      }
+      this.callBackService.sendPhoneNumber(userData).then();
     }
-
-    this.callBackService.sendPhoneNumber(userData).then();
   }
 }

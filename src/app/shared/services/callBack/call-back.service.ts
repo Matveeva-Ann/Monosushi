@@ -23,7 +23,6 @@ export class CallBackService {
   }
 
   deletePhoneData(id: string) {
-    console.log(id)
     const categoryDocRef = doc(this.afs, `callBack/${id}`);
     return deleteDoc(categoryDocRef);
   }
